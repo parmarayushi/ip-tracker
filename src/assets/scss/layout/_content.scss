@@ -1,0 +1,12 @@
+.image-bg {
+    flex: 0 0 30%;
+    background-image: url(/assets/images/pattern-bg.png);
+}
+
+#map{
+    z-index: -1;
+}
+
+.ipDetails{
+    // @include position(absolute,240px,auto,auto,230px)
+}
