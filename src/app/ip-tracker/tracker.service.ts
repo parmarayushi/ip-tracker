@@ -10,7 +10,7 @@ export class TrackerService {
 
   constructor(private _http:HttpClient) { 
     // this.apiLink='https://geo.ipify.org/api/v2/country?apiKey=at_4opohXUHtQd907us3fZ5sSXphDFu1&ipAddress';
-    this.api = 'http://ipwho.is/'
+    this.api = 'https://ipwho.is/'
   }
 
   public getLocation(ipAddress:any):Observable<any>{
