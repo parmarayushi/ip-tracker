@@ -9,12 +9,12 @@ export class TrackerService {
   public api:string
 
   constructor(private _http:HttpClient) { 
-    this.apiLink='https://geo.ipify.org/api/v2/country?apiKey=at_4opohXUHtQd907us3fZ5sSXphDFu1&ipAddress';
+    // this.apiLink='https://geo.ipify.org/api/v2/country?apiKey=at_4opohXUHtQd907us3fZ5sSXphDFu1&ipAddress';
     this.api = 'http://ipwho.is/'
   }
 
   public getLocation(ipAddress:any):Observable<any>{
-    return this._http.get<any>(`${this.apiLink}=${ipAddress}`);
+    return this._http.get<any>(`${this.api}/${ipAddress}`);
   }
 
   public getCoordinates(ipAddress:any):Observable<any>{

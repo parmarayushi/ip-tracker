@@ -14,6 +14,7 @@ export class IpTrackerPresentationComponent implements OnInit {
   @Input() public set locationData(value: any) {
     if (value) {
       this._locationData = value;
+      console.log(value);
     }
   }
 

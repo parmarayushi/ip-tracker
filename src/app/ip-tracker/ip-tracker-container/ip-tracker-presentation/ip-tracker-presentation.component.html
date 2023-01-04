@@ -20,15 +20,15 @@
         </div>
         <div class="details text-center text-sm-start ps-sm-4 pe-sm-4 mb-4 mb-sm-0">
           <span class="text-muted fw-bold title">LOCATION</span>
-          <h4 *ngIf="locationData">{{locationData.location.country}}, {{locationData.location.region}}</h4>
+          <h4 *ngIf="locationData">{{locationData.city}}, {{locationData.region}}, {{locationData.country}}</h4>
         </div>
         <div class="details text-center text-sm-start ps-sm-4 pe-sm-4 mb-4 mb-sm-0">
           <span class="text-muted fw-bold title">TIMEZONE</span>
-          <h4 *ngIf="locationData">{{locationData.location.timezone}}</h4>
+          <h4 *ngIf="locationData">{{locationData.timezone.utc}}</h4>
         </div>
         <div class="text-center text-sm-start ps-sm-4 pe-sm-4">
           <span class="text-muted fw-bold title">ISP</span>
-          <h4 *ngIf="locationData">{{locationData.isp}}</h4>
+          <h4 *ngIf="locationData">{{locationData.connection.isp}}</h4>
         </div>
       </div>
       <div *ngIf="!locationData"></div>
