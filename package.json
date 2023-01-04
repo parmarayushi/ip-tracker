@@ -1,7 +1,6 @@
 {
   "name": "ip-tracker",
   "version": "0.0.0",
-  "homepage": "https://parmarayushi.github.io",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
