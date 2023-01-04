@@ -69,7 +69,7 @@ export class IpTrackerPresentationComponent implements OnInit {
     });
 
     tiles.addTo(this.map);
-    Leaflet.Icon.Default.prototype.options.iconUrl = '../../../../assets/images/icon-location.svg';
+    Leaflet.Icon.Default.prototype.options.iconUrl = './assets/images/icon-location.svg';
   }
 
   public onSubmit() {
