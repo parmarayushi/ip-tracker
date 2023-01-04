@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import * as Leaflet from 'leaflet';
-import { TrackerService } from '../../tracker.service';
 import { IpTrackerPresenterService } from '../ip-tracker-presenter/ip-tracker-presenter.service';
 
 @Component({
@@ -12,19 +11,45 @@ import { IpTrackerPresenterService } from '../ip-tracker-presenter/ip-tracker-pr
 })
 export class IpTrackerPresentationComponent implements OnInit {
 
+  @Input() public set locationData(value: any) {
+    if (value) {
+      this._locationData = value;
+    }
+  }
+
+  public get locationData(): any {
+    return this._locationData;
+  }
+
+  @Input() public set coordinatePoints(value: any) {
+    if (value) {
+      this._coordinates = value;
+    }
+  }
+
+  public get coordinatePoints(): any {
+    return this._coordinates;
+  }
+
+  @Output() public location: EventEmitter<any>;
+
   public mapIpAdress: FormGroup;
   public latitude: number = 1
   public longitude: number = 1
-  private map: any;
 
-  constructor(
-    private ipTrackerPresentersrevice: IpTrackerPresenterService,
-    private trackerService: TrackerService
-  ) {
+  private map: any;
+  private _locationData: any;
+  private _coordinates: any;
+
+  constructor(private ipTrackerPresentersrevice: IpTrackerPresenterService) {
     this.mapIpAdress = this.ipTrackerPresentersrevice.buildForm();
+    this.location = new EventEmitter();
   }
 
   ngOnInit(): void {
+    this.ipTrackerPresentersrevice.getLocationData$.subscribe((res) => {
+      this.location.emit(res);
+    })
   }
 
   ngAfterViewInit(): void {
@@ -45,14 +70,16 @@ export class IpTrackerPresentationComponent implements OnInit {
 
     tiles.addTo(this.map);
     Leaflet.marker([this.latitude, this.longitude]).addTo(this.map);
+    Leaflet.Icon.Default.prototype.options.iconUrl = '../../../../assets/images/icon-location.svg';
   }
 
   public onSubmit() {
-    this.trackerService.getMarker(this.mapIpAdress.value.ipAddress).subscribe(value => {
-      this.latitude = value.latitude;
-      this.longitude = value.longitude;
+    this.ipTrackerPresentersrevice.submit(this.mapIpAdress.value.ipAddress)
+    if (this.coordinatePoints) {
+      this.latitude = this.coordinatePoints.latitude;
+      this.longitude = this.coordinatePoints.longitude;
       Leaflet.marker([this.latitude, this.longitude]).addTo(this.map);
       this.map.flyTo([this.latitude, this.longitude], 15);
-    })
+    }
   }
 }

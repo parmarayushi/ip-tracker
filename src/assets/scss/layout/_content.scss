@@ -1,12 +1,23 @@
 .image-bg {
     flex: 0 0 30%;
     background-image: url(/assets/images/pattern-bg.png);
-}
-
-#map{
-    z-index: -1;
+    background-position: center;
+    background-size: cover;
 }
 
 .ipDetails{
-    // @include position(absolute,240px,auto,auto,230px)
+    position: absolute;
+    top: 26%;
+    z-index: 999;
+    border-radius: 15px;
+}
+
+.title{
+    font-size: 10px;
+}
+
+.details{
+    @media (min-width: 576px){
+        border-right: 2px solid #d2d3d4;
+    }
 }

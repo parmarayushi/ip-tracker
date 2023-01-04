@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { TrackerService } from '../tracker.service';
 
 @Component({
@@ -7,14 +8,19 @@ import { TrackerService } from '../tracker.service';
 })
 export class IpTrackerContainerComponent implements OnInit {
 
-  constructor(private service: TrackerService) { }
+  public locationData$: Observable<any>;
+  public coordinates$: Observable<any>;
 
-  ngOnInit(): void {
-    this.service.getApi().subscribe((res)=>{
-      if(res){
-        console.log(res);
-      }
-    })
+  constructor(private service: TrackerService) {
+    this.locationData$ = new Observable();
+    this.coordinates$ = new Observable();
   }
 
+  ngOnInit(): void {
+  }
+
+  public getIpaddress(value: any) {
+    this.locationData$ = this.service.getLocation(value);
+    this.coordinates$ = this.service.getCoordinates(value);
+  }
 }
