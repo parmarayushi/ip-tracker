@@ -50,7 +50,6 @@ export class IpTrackerPresentationComponent implements OnInit {
     this.ipTrackerPresentersrevice.getLocationData$.subscribe((res) => {
       this.location.emit(res); 
     })
-    this.location.emit('123.201.81.210'); 
   }
 
   ngAfterViewInit(): void {
