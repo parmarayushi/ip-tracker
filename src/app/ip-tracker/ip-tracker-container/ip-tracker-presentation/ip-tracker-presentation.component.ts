@@ -14,7 +14,6 @@ export class IpTrackerPresentationComponent implements OnInit {
   @Input() public set locationData(value: any) {
     if (value) {
       this._locationData = value;
-      console.log(value);
     }
   }
 
@@ -49,8 +48,9 @@ export class IpTrackerPresentationComponent implements OnInit {
 
   ngOnInit(): void {
     this.ipTrackerPresentersrevice.getLocationData$.subscribe((res) => {
-      this.location.emit(res);
+      this.location.emit(res); 
     })
+    this.location.emit('123.201.81.210'); 
   }
 
   ngAfterViewInit(): void {
@@ -70,7 +70,6 @@ export class IpTrackerPresentationComponent implements OnInit {
     });
 
     tiles.addTo(this.map);
-    Leaflet.marker([this.latitude, this.longitude]).addTo(this.map);
     Leaflet.Icon.Default.prototype.options.iconUrl = '../../../../assets/images/icon-location.svg';
   }
 
