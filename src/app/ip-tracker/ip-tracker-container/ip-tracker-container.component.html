@@ -1,2 +1,3 @@
-<app-ip-tracker-presentation [locationData]="locationData$ | async" [coordinatePoints]="coordinates$ | async"
+<app-ip-tracker-presentation [coordinatePoints]="coordinates$ | async"
     (location)="getIpaddress($event)"></app-ip-tracker-presentation>
+<!-- [locationData]="locationData$ | async" -->

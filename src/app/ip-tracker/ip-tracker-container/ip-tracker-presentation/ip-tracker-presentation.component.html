@@ -12,26 +12,26 @@
         </button>
       </div>
     </form>
-    <div class="card ipDetails" *ngIf="locationData">
+    <div class="card ipDetails">
       <div class="card-body d-sm-flex p-sm-4 px-5 px-sm-4">
         <div class="details text-center text-sm-start pe-sm-4 mb-4 mb-sm-0">
           <span class="text-muted fw-bold title">IP ADDRESS</span>
-          <h4 *ngIf="locationData">{{locationData.ip}}</h4>
+          <h4>{{coordinatePoints?.ip}}</h4>
         </div>
         <div class="details text-center text-sm-start ps-sm-4 pe-sm-4 mb-4 mb-sm-0">
           <span class="text-muted fw-bold title">LOCATION</span>
-          <h4 *ngIf="locationData">{{locationData.city}} {{locationData.region}}, {{locationData.country}}</h4>
+          <h4>{{coordinatePoints?.city}} {{coordinatePoints?.region}}, {{coordinatePoints?.country}}</h4>
         </div>
         <div class="details text-center text-sm-start ps-sm-4 pe-sm-4 mb-4 mb-sm-0">
           <span class="text-muted fw-bold title">TIMEZONE</span>
-          <h4 *ngIf="locationData">{{locationData.timezone.utc}}</h4>
+          <h4>{{coordinatePoints?.timezone?.utc}}</h4>
         </div>
         <div class="text-center text-sm-start ps-sm-4 pe-sm-4">
           <span class="text-muted fw-bold title">ISP</span>
-          <h4 *ngIf="locationData">{{locationData.connection.isp}}</h4>
+          <h4>{{coordinatePoints?.connection?.isp}}</h4>
         </div>
       </div>
-      <div *ngIf="!locationData"></div>
+      <!-- <div *ngIf="!locationData"></div> -->
     </div>
   </div>
   <div id="map" class="h-100 flex-grow-1"></div>

@@ -17,7 +17,7 @@ export class IpTrackerPresenterService {
   public buildForm() {
     return this._fb.group({
       ipAddress: ['']
-    })
+    });
   }
 
   public submit(value: any) {
